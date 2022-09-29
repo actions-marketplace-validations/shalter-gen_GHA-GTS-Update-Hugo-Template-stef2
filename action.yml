@@ -22,12 +22,14 @@ runs:
         regex: false
 
     - name: Remove padding in body
+      shell: bash
       run: |
         grep -qxF '#body .padding {padding: 0rem 0rem;}' static/css/theme-mine.css || echo '
 
         #body .padding {padding: 0rem 0rem;}' >> static/css/theme-mine.css
 
     - name: Remove padding in chapter
+      shell: bash
       run: |
         grep -qxF '#chapter {padding: 0 0 4rem 0;}' static/css/theme-mine.css || echo '
 
@@ -60,5 +62,6 @@ runs:
     - name: Commit & Push changes
       uses: actions-js/push@master
       with:
-        github_token: ${{ secrets.GITHUB_TOKEN }}
+        #github_token: ${{ secrets.GITHUB_TOKEN }}
+        github_token: ${{ github.token }}
         message: GHA Auto-Update Template for GTS
