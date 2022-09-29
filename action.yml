@@ -4,13 +4,6 @@ description: "Transform Hugo Template To GDemo for GTS"
 runs:
   using: "composite"
   steps:
-    # Reference a specific commit
-    #- uses: actions/checkout@a81bbbf8298c0fa03ea29cdc473d45769f953675
-    # Reference the major version of a release
-    #- uses: actions/checkout@v3
-    # References a local action
-    #- uses: ./.github/workflows/transform-tpl-to-gdemo
-
     - uses: actions/checkout@v2
 
     - name: Make body font color black
@@ -62,6 +55,5 @@ runs:
     - name: Commit & Push changes
       uses: actions-js/push@master
       with:
-        #github_token: ${{ secrets.GITHUB_TOKEN }}
         github_token: ${{ github.token }}
         message: GHA Auto-Update Template for GTS
